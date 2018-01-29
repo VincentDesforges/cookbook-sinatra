@@ -8,5 +8,18 @@ configure :development do
 end
 
 get '/' do
-  'Hello world!'
+  @usernames = [ 'ssaunier', 'Papillard' ]
+  erb :index
+
+
+end
+
+get '/about' do
+  erb :about
+end
+
+get '/team/:username' do
+  # binding.pry  # <= code will stop here for HTTP request localhost:4567/team/someone
+  puts params[:username]
+  "The username is #{params[:username]}"
 end
